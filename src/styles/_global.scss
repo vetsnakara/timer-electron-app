@@ -1,0 +1,12 @@
+@import './variables';
+
+html {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: $font-size;
+  color: $black
+}
+
+html,
+body {
+  height: 100%;
+}

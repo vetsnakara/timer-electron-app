@@ -1,8 +1,36 @@
 import React from 'react'
 
-const TaskList = () => {
+import Task from '../Task'
+
+const TaskList = ({
+  tasks,
+  activeTask,
+  onDelete,
+  onActivate
+}) => {
+  const taskList = [...tasks]
+
+  if (activeTask) {
+    taskList.unshift(activeTask)
+  }
+
   return (
-    <h1>TaskList</h1>
+    <ul>
+      {taskList.map((task, index) => {
+        const isActive = activeTask && index === 0
+
+        return (
+          <li key={task.id}>
+            <Task
+              task={task}
+              isActive={isActive}
+              onDelete={() => onDelete(task)}
+              onActivate={() => onActivate(task)}
+            />
+          </li>
+        )
+      })}
+    </ul>
   )
 }
 

@@ -16,7 +16,23 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: 'babel-loader'
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[path][name]__[local]' // '[hash:base64:5]'
+                // localIdentName: '[hash:base64:5]'
+              }
+            }
+          },
+          'sass-loader'
+        ]
       }
     ]
   },

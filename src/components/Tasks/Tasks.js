@@ -5,10 +5,14 @@ import TaskList from '../TaskList'
 
 const Tasks = ({
   tasks,
+  timer,
   activeTask,
   onTaskCreate,
   onTaskDelete,
-  onTaskActivate
+  onTaskActivate,
+  onTaskDeactivate,
+  onTimerStart,
+  onTimerStop
 }) => {
   return (
     <div>
@@ -17,10 +21,14 @@ const Tasks = ({
       />
 
       <TaskList
-        activeTask={activeTask}
         tasks={tasks}
+        timer={timer}
+        activeTask={activeTask}
         onActivate={onTaskActivate}
+        onDeactivate={onTaskDeactivate}
         onDelete={onTaskDelete}
+        onTimerStart={onTimerStart}
+        onTimerStop={onTimerStop}
       />
     </div>
 

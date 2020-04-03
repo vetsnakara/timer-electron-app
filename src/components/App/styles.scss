@@ -4,11 +4,15 @@
   height: 100vh;
 
   &__header {
-    padding: 5rem
+    margin-bottom: 20px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
   }
 
   &__main {
+    display: flex;
+    flex-direction: column;
+    height: 0;
     flex-grow: 1;
-    background-color: lightgreen;
+    overflow-y: auto;
   }
 }

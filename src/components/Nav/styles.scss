@@ -1,8 +1,15 @@
 @import '../../styles/variables';
 
-.header {
+.nav {
   display: flex;
   justify-content: space-between;
   background-color: $primary-color; 
   color: $white;
+
+  &__link {
+    display: inline-block;
+    padding: 20px;
+    color: $white;
+    text-decoration: none;
+  }
 }

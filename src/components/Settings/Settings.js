@@ -1,5 +1,12 @@
 import React from 'react'
 
+import Button from '../Button'
+
+import styles from './styles'
+import { block } from '../../utils'
+
+const b = block(styles)
+
 class Settings extends React.Component {
   constructor (props) {
     super(props)
@@ -40,19 +47,36 @@ class Settings extends React.Component {
     const { time, unit } = this.state
 
     return (
-      <div>
-        <form>
-          <p>Initial Duration</p>
+      <div className={b()}>
+        <h1 className={b('title')}>Settings</h1>
+        <div className={b('group')}>
+          <label
+            htmlFor='duration'
+            className={b('group-title')}
+          >
+            Initial Duration
+          </label>
           <input
+            id='duration'
+            className={b('input')}
             type='number'
             name='time'
             min='1'
             value={time}
             onChange={this.handleChange}
           />
+        </div>
 
-          <p>Units</p>
+        <div className={b('group')}>
+          <label
+            htmlFor='units'
+            className={b('group-title')}
+          >
+            Units
+          </label>
           <select
+            id='units'
+            className={b('input')}
             name='unit'
             value={unit}
             onChange={this.handleChange}
@@ -61,11 +85,14 @@ class Settings extends React.Component {
             <option value='minutes'>Minutes</option>
             <option value='hours'>Hours</option>
           </select>
-        </form>
+        </div>
 
-        <button onClick={this.props.onSettingsReset}>
+        <Button
+          color='#F44336'
+          onClick={this.props.onSettingsReset}
+        >
           Reset
-        </button>
+        </Button>
       </div>
     )
   }

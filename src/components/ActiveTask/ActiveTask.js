@@ -1,5 +1,12 @@
 import React from 'react'
 
+import styles from './styles'
+import { block } from '../../utils'
+
+import Button from '../Button'
+
+const b = block(styles)
+
 const ActiveTask = ({
   timer,
   activeTask,
@@ -8,26 +15,36 @@ const ActiveTask = ({
   onTimerStop
 }) => {
   const renderTaskInfo = () => (
-    <div>
-      <h2>Time Left: {timer.display}</h2>
-      <h4>Current Task: {activeTask.task}</h4>
+    <div className={b('info')}>
+      <h2 className={b('task-title')}>{activeTask.task}</h2>
+      <h4 className={b('task-time')}>Time Left: <span className={b('time-left')}>{timer.display}</span></h4>
     </div>
   )
 
   const renderActionButtons = () => (
-    <div>
+    <div className={b('buttons')}>
       {
         timer.active
           ? (
-            <button onClick={onTimerStop}>Stop Timer</button>
+            <Button
+              onClick={onTimerStop}
+              color='#F44336'
+            >
+              Stop Timer
+            </Button>
           ) : (
             <>
-              <button onClick={onTimerStart}>Start Timer</button>
-              <button
+              <Button
+                color='#4CAF50'
+                onClick={onTimerStart}
+              >Start Timer
+              </Button>
+              <Button
+                color='#26a69a'
                 onClick={() => onTaskDeactivate(activeTask)}
               >
                 Deactivate Task
-              </button>
+              </Button>
             </>
           )
       }
@@ -35,7 +52,7 @@ const ActiveTask = ({
   )
 
   return (
-    <div>
+    <div className={b()}>
       {
         activeTask
           ? (
@@ -44,7 +61,7 @@ const ActiveTask = ({
               {renderActionButtons()}
             </>
           ) : (
-            <h3>No Active Tasks</h3>
+            <h3 className={b('no-task')}>No Active Tasks</h3>
           )
       }
     </div>

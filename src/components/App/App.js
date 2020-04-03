@@ -1,4 +1,4 @@
-/* global localStorage */
+/* global localStorage, confirm */
 
 import React from 'react'
 import {
@@ -11,7 +11,8 @@ import { v4 as uuid } from 'uuid'
 
 import { block, Timer } from '../../utils'
 
-import Header from '../Header'
+import Container from '../Container'
+import Nav from '../Nav'
 import ActiveTask from '../ActiveTask'
 import Tasks from '../Tasks'
 import Settings from '../Settings'
@@ -138,10 +139,12 @@ handleTaskCreate = task => {
 
 // Delete task
 handleTaskDelete = task => {
-  this.setState(state => ({
-    ...state,
-    tasks: state.tasks.filter(t => t.id !== task.id)
-  }))
+  if (confirm('Delete task?')) {
+    this.setState(state => ({
+      ...state,
+      tasks: state.tasks.filter(t => t.id !== task.id)
+    }))
+  }
 }
 
 // Activate task
@@ -193,50 +196,58 @@ render () {
   return (
     <Router>
       <div className={b()}>
-        <Header className={b('header')} />
+        <header className={b('header')}>
+          <Nav />
+        </header>
 
         <main className={b('main')}>
-          <Switch>
-            <Route
-              path='/'
-              exact
-              render={() => (
-                <ActiveTask
-                  timer={timer}
-                  activeTask={activeTask}
-                  onTaskDeactivate={this.handleTaskDeactivate}
-                  onTimerStart={this.handleTimerStart}
-                  onTimerStop={this.handleTimerStop}
-                />
-              )}
-            />
+          <Container>
+            <Switch>
+              <Route
+                path='/'
+                exact
+                render={() => (
+                  <ActiveTask
+                    timer={timer}
+                    activeTask={activeTask}
+                    onTaskDeactivate={this.handleTaskDeactivate}
+                    onTimerStart={this.handleTimerStart}
+                    onTimerStop={this.handleTimerStop}
+                  />
+                )}
+              />
 
-            <Route
-              path='/tasks'
-              render={() => (
-                <Tasks
-                  tasks={tasks}
-                  activeTask={activeTask}
-                  onTaskCreate={this.handleTaskCreate}
-                  onTaskDelete={this.handleTaskDelete}
-                  onTaskActivate={this.handleTaskActivate}
-                />
-              )}
-            />
+              <Route
+                path='/tasks'
+                render={() => (
+                  <Tasks
+                    tasks={tasks}
+                    timer={timer}
+                    activeTask={activeTask}
+                    onTaskCreate={this.handleTaskCreate}
+                    onTaskDelete={this.handleTaskDelete}
+                    onTaskActivate={this.handleTaskActivate}
+                    onTaskDeactivate={this.handleTaskDeactivate}
+                    onTimerStart={this.handleTimerStart}
+                    onTimerStop={this.handleTimerStop}
+                  />
+                )}
+              />
 
-            <Route
-              path='/settings'
-              render={() => (
-                <Settings
-                  timer={timer}
-                  onSettingsUpdate={this.handleSettingsUpdate}
-                  onSettingsReset={this.handleSettingsReset}
-                />
-              )}
-            />
+              <Route
+                path='/settings'
+                render={() => (
+                  <Settings
+                    timer={timer}
+                    onSettingsUpdate={this.handleSettingsUpdate}
+                    onSettingsReset={this.handleSettingsReset}
+                  />
+                )}
+              />
 
-            <Route component={NotFound} />
-          </Switch>
+              <Route component={NotFound} />
+            </Switch>
+          </Container>
         </main>
       </div>
     </Router>

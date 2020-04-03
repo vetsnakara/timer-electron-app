@@ -42,5 +42,9 @@ module.exports = {
       title: 'Hello Webapck bundled JavaScript project!',
       template: './src/index.html'
     })
-  ]
+  ],
+
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss']
+  }
 }

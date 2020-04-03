@@ -1,6 +1,11 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
 
+import styles from './styles'
+import { block } from '../../utils'
+
+const b = block(styles)
+
 const AddTask = ({
   onAdd
 }) => {
@@ -13,22 +18,29 @@ const AddTask = ({
   const handleSubmit = e => {
     e.preventDefault()
 
-    onAdd({
-      id: uuid(),
-      totalTime: 0,
-      task
-    })
+    if (task.trim()) {
+      onAdd({
+        id: uuid(),
+        totalTime: 0,
+        task
+      })
 
-    setTask('')
+      setTask('')
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      className={b()}
+      onSubmit={handleSubmit}
+    >
       <input
+        className={b('input')}
         type='text'
-        placeholder='Add a task'
+        placeholder='Add new task'
         value={task}
         onChange={handleChange}
+        autoFocus
       />
     </form>
   )

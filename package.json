@@ -50,11 +50,13 @@
   "dependencies": {
     "bem-css-modules": "^1.4.2",
     "classnames": "^2.2.6",
+    "color": "^3.1.2",
     "core-js": "^3.6.4",
     "moment": "^2.24.0",
     "moment-duration-format": "^2.3.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-icons": "^3.9.0",
     "react-router-dom": "^5.1.2",
     "reset-css": "^5.0.1",
     "uuid": "^7.0.2"

@@ -1,0 +1,49 @@
+@import "../../styles/variables";
+
+$padding: 20px;
+
+.settings {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 16px;
+    border: 1px solid gray;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    padding: $padding;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    padding: $padding;
+    border: 1px solid gray;
+
+    &:last-of-type {
+      margin-bottom: 20px;
+      border-radius: 0 0 5px 5px;
+    }
+
+    &:not(:last-of-type) {
+      border-bottom: none;
+    }
+  }
+
+  &__group-title {
+    margin-bottom: 10px;
+  }
+
+  &__input {
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: rgba($orange, 0.8);
+    }
+  }
+}

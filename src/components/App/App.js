@@ -161,10 +161,12 @@ handleTaskActivate = task => {
 }
 
 // Deactivate task
-handleTaskDeactivate = task => {
+handleTaskDeactivate = activeTask => {
+  this.timer.reset()
+
   this.setState(state => ({
     ...state,
-    tasks: [task, ...state.tasks],
+    tasks: [activeTask, ...state.tasks],
     activeTask: null
   }))
 }

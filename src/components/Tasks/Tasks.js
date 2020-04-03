@@ -3,6 +3,11 @@ import React from 'react'
 import AddTask from '../AddTask'
 import TaskList from '../TaskList'
 
+import styles from './styles'
+import { block } from '../../utils'
+
+const b = block(styles)
+
 const Tasks = ({
   tasks,
   timer,
@@ -15,7 +20,7 @@ const Tasks = ({
   onTimerStop
 }) => {
   return (
-    <div>
+    <div className={b()}>
       <AddTask
         onAdd={onTaskCreate}
       />

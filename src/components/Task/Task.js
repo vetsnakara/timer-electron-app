@@ -13,6 +13,7 @@ import { block } from '../../utils'
 
 import Icon from '../Icon'
 import IconButton from '../IconButton'
+import Tooltip from '../Tooltip'
 
 const b = block(styles)
 
@@ -32,27 +33,33 @@ const Task = ({
       <div className={b('controls')}>
         {timer.active
           ? (
-            <IconButton
-              component={PauseIcon}
-              color='#ee6e73'
-              size={18}
-              onClick={onTimerStop}
-            />
+            <Tooltip text='Stop'>
+              <IconButton
+                component={PauseIcon}
+                color='#ee6e73'
+                size={18}
+                onClick={onTimerStop}
+              />
+            </Tooltip>
           ) : (
-            <IconButton
-              component={PlayIcon}
-              color='#ee6e73'
-              size={18}
-              onClick={onTimerStart}
-            />
+            <Tooltip text='Start'>
+              <IconButton
+                component={PlayIcon}
+                color='#ee6e73'
+                size={18}
+                onClick={onTimerStart}
+              />
+            </Tooltip>
           )}
-        <IconButton
-          component={StopIcon}
-          disabled={timer.active}
-          color='#ee6e73'
-          size={18}
-          onClick={onDeactivate}
-        />
+        <Tooltip text='Deactivate'>
+          <IconButton
+            component={StopIcon}
+            disabled={timer.active}
+            color='#ee6e73'
+            size={18}
+            onClick={onDeactivate}
+          />
+        </Tooltip>
       </div>
     )
   }
@@ -61,13 +68,15 @@ const Task = ({
     <div className={b()}>
       <div className={b('left')}>
         {!selected ? (
-          <IconButton
-            component={ActivateIcon}
-            color='#ee6e73'
-            size={20}
-            onClick={onActivate}
-            disabled={disabled}
-          />
+          <Tooltip text='Activate'>
+            <IconButton
+              component={ActivateIcon}
+              color='#ee6e73'
+              size={20}
+              onClick={onActivate}
+              disabled={disabled}
+            />
+          </Tooltip>
         ) : (
           <Icon
             component={ActiveTaskIcon}
@@ -87,13 +96,15 @@ const Task = ({
       </div>
 
       {!selected ? (
-        <IconButton
-          component={RemoveIcon}
-          className={b('remove')}
-          color='gray'
-          size={15}
-          onClick={onDelete}
-        />
+        <Tooltip text='Remove'>
+          <IconButton
+            component={RemoveIcon}
+            className={b('remove')}
+            color='gray'
+            size={15}
+            onClick={onDelete}
+          />
+        </Tooltip>
       ) : renderControlButtons()}
     </div>
   )

@@ -23,14 +23,27 @@ const TaskList = ({
     taskList.unshift(activeTask)
   }
 
+  if (taskList.length === 0) {
+    return (
+      <p
+        style={{
+          textAlign: 'center',
+          marginTop: 20
+        }}
+      >
+        No tasks yet. Add some.
+      </p>
+    )
+  }
+
   return (
     <ul className={b()}>
       {taskList.map((task, index) => {
-        const selected = activeTask && index === 0
+        const selected = !!activeTask && index === 0
 
         return (
           <li
-            className={b('item', { selected: selected })}
+            className={b('item', { selected })}
             key={task.id}
           >
             <Task

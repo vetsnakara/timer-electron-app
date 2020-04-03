@@ -1,0 +1,20 @@
+.tooltip {
+  &__wrapper {
+    position: relative;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 100%;
+    border-radius: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hsla(0, 0%, 20%, 0.9);
+    padding: 7px;
+    margin-bottom: 5px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+  }  
+}

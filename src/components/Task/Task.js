@@ -51,7 +51,10 @@ const Task = ({
               />
             </Tooltip>
           )}
-        <Tooltip text='Deactivate'>
+        <Tooltip
+          text='Deactivate'
+          disabled={timer.active}
+        >
           <IconButton
             component={StopIcon}
             disabled={timer.active}
@@ -68,7 +71,10 @@ const Task = ({
     <div className={b()}>
       <div className={b('left')}>
         {!selected ? (
-          <Tooltip text='Activate'>
+          <Tooltip
+            text='Activate'
+            disabled={disabled}
+          >
             <IconButton
               component={ActivateIcon}
               color='#ee6e73'

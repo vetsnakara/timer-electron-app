@@ -6,12 +6,12 @@ import { block } from '../../utils'
 
 const b = block(styles)
 
-const Tooltip = ({ text, children }) => {
+const Tooltip = ({ text, children, disabled = false }) => {
   return (
     <Hover>
       {hover => (
         <div className={b('wrapper')}>
-          {hover && <div className={b('content')}>{text}</div>}
+          {!disabled && hover && <div className={b('content')}>{text}</div>}
           {children}
         </div>
       )}

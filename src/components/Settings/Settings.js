@@ -45,6 +45,7 @@ class Settings extends React.Component {
 
   render () {
     const { time, unit } = this.state
+    const { active } = this.props.timer
 
     return (
       <div className={b()}>
@@ -64,6 +65,7 @@ class Settings extends React.Component {
             min='1'
             value={time}
             onChange={this.handleChange}
+            disabled={active}
           />
         </div>
 
@@ -80,6 +82,7 @@ class Settings extends React.Component {
             name='unit'
             value={unit}
             onChange={this.handleChange}
+            disabled={active}
           >
             <option value='seconds'>Seconds</option>
             <option value='minutes'>Minutes</option>

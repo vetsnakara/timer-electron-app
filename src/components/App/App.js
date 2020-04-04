@@ -2,12 +2,10 @@
 
 import React from 'react'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route
 } from 'react-router-dom'
-
-import { v4 as uuid } from 'uuid'
 
 import { block, Timer } from '../../utils'
 
@@ -28,13 +26,7 @@ const TIMER_INIT_SETTINGS = {
 }
 
 const INITIAL_STATE = {
-  tasks: [
-    { id: uuid(), task: 'Task 1', totalTime: 10, isActive: false },
-    { id: uuid(), task: 'Task 2', totalTime: 20, isActive: false },
-    { id: uuid(), task: 'Task 3', totalTime: 30, isActive: false },
-    { id: uuid(), task: 'Task 4', totalTime: 40, isActive: false },
-    { id: uuid(), task: 'Task 5', totalTime: 50, isActive: false }
-  ],
+  tasks: [],
 
   activeTask: null,
 

@@ -3,6 +3,10 @@ const Dotenv = require('dotenv-webpack')
 module.exports = {
   mode: 'development',
 
+  output: {
+    publicPath: '/'
+  },
+
   plugins: [
     new Dotenv({
       path: './.env.development'
@@ -10,8 +14,8 @@ module.exports = {
   ],
 
   devServer: {
+    port: 9000,
     hot: true,
-    open: true,
     overlay: true,
     historyApiFallback: true
   },
